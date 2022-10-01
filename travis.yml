@@ -1,0 +1,16 @@
+sudo: required
+
+language: generic
+
+services:
+  - docker
+
+before_install:
+  - echo "start creating an image with dockerfile"
+  - docker build -f Dockerfile.dev -t ggobugi1986/muko-web .
+
+script:
+  - docker run -e CI=true ggobugi1986/muko-web npm run test -- --coverage
+
+after_success:
+  - echo "Test Success"
