@@ -11,11 +11,12 @@ import { desktopLayoutContext } from 'contexts';
 import { desktopRoutes } from 'routes';
 
 // Import Other Modules
+import { ResizeObserver } from '@juggle/resize-observer';
 import useMeasure from 'react-use-measure';
 
 const DesktopLayout = () => {
   // Set UseMeasure Hooks
-  const [ref, bounds] = useMeasure();
+  const [ref, bounds] = useMeasure({ polyfill: ResizeObserver });
 
   // Set Context Values
   const value = {

@@ -8,11 +8,6 @@ import { mobileLayoutContext } from 'contexts';
 import loadable from '@loadable/component';
 import clsx from 'clsx';
 import { motion } from 'framer-motion';
-import { Autoplay } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import CSS
-import 'swiper/css';
 
 const Carousel = ({ slides }) => {
   // Set UseContext Hooks
@@ -53,22 +48,6 @@ const Carousel = ({ slides }) => {
             />
           ))}
         </div>
-
-        <Swiper
-          className="h-full"
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay]}
-          onSlideChange={(swiper) => {
-            setActiveIndex(swiper.activeIndex);
-          }}
-        >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id}></SwiperSlide>
-          ))}
-        </Swiper>
       </>
     )
   );

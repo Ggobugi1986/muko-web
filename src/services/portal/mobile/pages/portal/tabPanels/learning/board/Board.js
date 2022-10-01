@@ -7,16 +7,6 @@ import { useSelector } from 'react-redux';
 // Import Contexts
 import { mobileLayoutContext } from 'contexts';
 
-// Import Slides
-import { Club, Concert } from './slides';
-
-// Import Other Modules
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper';
-
-// Import CSS
-import 'swiper/css';
-
 const Board = ({ scrollY }) => {
   // Set UseContext Hooks
   const { boardHeight } = useContext(mobileLayoutContext);
@@ -43,39 +33,7 @@ const Board = ({ scrollY }) => {
     },
   ];
 
-  return (
-    <div className="relative p-4" style={{ height: boardHeight }}>
-      {slides.map((slide) => (
-        <div key={slide.id} className="absolute inset-0">
-          {slide.id === activeIndex && slide.type === 'club' && (
-            <Club {...slide} />
-          )}
-
-          {slide.id === activeIndex && slide.type === 'concert' && (
-            <Concert {...slide} />
-          )}
-        </div>
-      ))}
-
-      <div className="absolute inset-0 z-50">
-        <Swiper
-          className="h-full"
-          onSlideChange={(swiper) => {
-            setActiveIndex(swiper.activeIndex);
-          }}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          modules={[Autoplay]}
-        >
-          {slides.map((slide) => (
-            <SwiperSlide key={slide.id}></SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </div>
-  );
+  return <div className="relative p-4" style={{ height: boardHeight }}></div>;
 };
 
 export default Board;
